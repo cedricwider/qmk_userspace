@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_HALMAK] = LAYOUT_planck_grid(
     KC_TAB , KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,    KC_BSPC,
     CLESC  , GUI_S,   ALT_H,   CTL_N,   SHFTT,   KC_COMM, KC_DOT,  SHFTA,   CTL_E,   ALT_O,   GUI_I,   KC_QUOT,
-    CW_TOGG, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,    CLENT,
+    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,    CLENT,
     FNCTN  , KC_LCTL, KC_LALT, KC_LGUI, CK_LWR,   LSPAC,   RSPAC,   CK_RSE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
