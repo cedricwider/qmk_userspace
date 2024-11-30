@@ -1,5 +1,5 @@
 {
-    "userspace_version": "1.1",
+    "userspace_version": "1.0",
     "build_targets": [
         [
             "planck/rev6",
@@ -10,8 +10,8 @@
             "halmak"
         ],
         [
-            "planck/rev6",
-            "cedricwider"
+            "zsa/voyager",
+            "voyageur"
         ]
     ]
 }
