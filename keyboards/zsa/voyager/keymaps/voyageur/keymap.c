@@ -14,40 +14,82 @@ enum custom_keycodes {
   ST_MACRO_3,
   ST_MACRO_4,
 };
+enum voyager_layers {
+    _BASE,
+    _DEVELOPER,
+    _NUMPAD,
+    _STUFF,
+    _NAVIGATION,
+};
 
+/*
+* Macro definitions for custom keycodes
+*/
 
+// Thumb keys
+#define CK_LWR LT(_DEVELOPER, KC_MINUS)
+#define CK_LSPAC LT(_NAVIGATION, KC_TAB)
+#define CK_RSPAC LT(_NAVIGATION, KC_ENTER)
+#define CK_RSE LT(_NUMPAD, KC_SPACE)
+
+// Home Row Mods
+#define CK_HRS MT(MOD_LGUI, KC_S)
+#define CK_HRH MT(MOD_LALT, KC_H)
+#define CK_HRN MT(MOD_LCTL, KC_N)
+#define CK_HRT MT(MOD_LSFT, KC_T)
+
+#define CK_HRA MT(MOD_RSFT, KC_A)
+#define CK_HRE MT(MOD_RCTL, KC_E)
+#define CK_HRO MT(MOD_RALT, KC_O)
+#define CK_HRI MT(MOD_RGUI, KC_I)
+
+// Special Keys
+#define CK_HYPR0 LGUI(LCTL(RALT(LSFT(KC_0))))
+#define HYPR_TAP ALL_T(KC_TAB)
+#define CK_CL_EC MT(MOD_LCTL, KC_ESCAPE)
+
+#define CK_ACS_0 LALT(LCTL(LSFT(KC_0)))
+#define CK_ACS_1 LALT(LCTL(LSFT(KC_1)))
+#define CK_ACS_2 LALT(LCTL(LSFT(KC_2)))
+#define CK_ACS_3 LALT(LCTL(LSFT(KC_3)))
+#define CK_ACS_4 LALT(LCTL(LSFT(KC_4)))
+#define CK_ACS_5 LALT(LCTL(LSFT(KC_5)))
+#define CK_ACS_6 LALT(LCTL(LSFT(KC_6)))
+#define CK_ACS_7 LALT(LCTL(LSFT(KC_7)))
+#define CK_ACS_8 LALT(LCTL(LSFT(KC_8)))
+#define CK_ACS_9 LALT(LCTL(LSFT(KC_9)))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [0] = LAYOUT_voyager(
-    LGUI(LCTL(RALT(LSFT(KC_0)))),KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSLS,
-    ALL_T(KC_TAB),  KC_W,           KC_L,           KC_R,           KC_B,           KC_Z,                                           KC_SCLN,        KC_Q,           KC_U,           KC_D,           KC_J,           KC_BSPC,
-    MT(MOD_LCTL, KC_ESCAPE),MT(MOD_LGUI, KC_S),MT(MOD_LALT, KC_H),MT(MOD_LCTL, KC_N),MT(MOD_LSFT, KC_T),KC_COMMA,                                       KC_DOT,         MT(MOD_RSFT, KC_A),MT(MOD_RCTL, KC_E),MT(MOD_RALT, KC_O),MT(MOD_RGUI, KC_I),MT(MOD_LCTL, KC_QUOTE),
+  [_BASE] = LAYOUT_voyager(
+    CK_HYPR0,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSLS,
+    HYPR_TAP,       KC_W,           KC_L,           KC_R,           KC_B,           KC_Z,                                           KC_SCLN,        KC_Q,           KC_U,           KC_D,           KC_J,           KC_BSPC,
+    CK_CL_EC,       CK_HRS,         CK_HRH,         CK_HRN,         CK_HRT,         KC_COMMA,                                       KC_DOT,         CK_HRA,         CK_HRE,         CK_HRO,         CK_HRI,         MT(MOD_LCTL, KC_QUOTE),
     CW_TOGG,        KC_F,           KC_M,           KC_V,           KC_C,           KC_SLASH,                                       KC_G,           KC_P,           KC_X,           KC_K,           KC_Y,           MT(MOD_LSFT, KC_ENTER),
-                                                    LT(1,KC_MINUS), LT(4,KC_ENTER),                                 LT(4,KC_ENTER), LT(2,KC_SPACE)
+                                                                    CK_LWR,         CK_LSPAC,                                       CK_RSPAC, CK_RSE
   ),
-  [1] = LAYOUT_voyager(
+  [_DEVELOPER] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_TRANSPARENT, KC_PLUS,        KC_PIPE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LCBR,        KC_HASH,        KC_EQUAL,       KC_RCBR,        KC_EXLM,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LABK,                                        KC_RABK,        KC_LPRN,        KC_DLR,         KC_MINUS,       KC_RPRN,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLS,                                        KC_TRANSPARENT, KC_LBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_RBRC,        KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(2),          KC_TRANSPARENT
+                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_NUMPAD),          KC_TRANSPARENT
   ),
-  [2] = LAYOUT_voyager(
+  [_NUMPAD] = LAYOUT_voyager(
     KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_SLASH,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_ASTR,        KC_TRANSPARENT,
     KC_GRAVE,       KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,                                         KC_COLN,        KC_4,           KC_5,           KC_6,           KC_MINUS,       KC_TRANSPARENT,
     KC_DELETE,      KC_LEFT_GUI,    KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_LEFT_SHIFT,  KC_F11,                                         KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F12,                                         KC_TRANSPARENT, KC_0,           KC_0,           KC_DOT,         KC_EQUAL,       KC_ENTER,
-                                                    KC_TRANSPARENT, TO(0),                                          TO(3),          KC_TRANSPARENT
+                                                                    KC_TRANSPARENT, TO(_BASE),                                      TO(_STUFF),     KC_TRANSPARENT
   ),
-  [3] = LAYOUT_voyager(
+  [_STUFF] = LAYOUT_voyager(
     RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_MODE_FORWARD,RGB_SLD,        RGB_VAD,        RGB_VAI,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,
     RGB_SAD,        RGB_SAI,        KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_END,         KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,                                 KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
     RGB_HUD,        RGB_HUI,        KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, TO(0),                                          KC_TRANSPARENT, KC_TRANSPARENT
+                                                    KC_TRANSPARENT, TO(_BASE),                                          KC_TRANSPARENT, KC_TRANSPARENT
   ),
-  [4] = LAYOUT_voyager(
-    KC_TRANSPARENT, LALT(LCTL(LSFT(KC_1))),LALT(LCTL(LSFT(KC_2))),LALT(LCTL(LSFT(KC_3))),LALT(LCTL(LSFT(KC_4))),LALT(LCTL(LSFT(KC_5))),                                LALT(LCTL(LSFT(KC_6))),LALT(LCTL(LSFT(KC_7))),LALT(LCTL(LSFT(KC_8))),LALT(LCTL(LSFT(KC_9))),LALT(LCTL(LSFT(KC_0))),KC_TRANSPARENT,
+  [_NAVIGATION] = LAYOUT_voyager(
+    KC_TRANSPARENT, CK_ACS_1,       CK_ACS_2,       CK_ACS_3,       CK_ACS_4,       CK_ACS_5,                                       CK_ACS_6,       CK_ACS_7,       CK_ACS_8,       CK_ACS_9,       CK_ACS_0,       KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TILD,        ST_MACRO_0,     ST_MACRO_1,     KC_TRANSPARENT, KC_TRANSPARENT,                                 LSFT(KC_TAB),   KC_TAB,         LALT(KC_BSPC),  KC_BSPC,        KC_DELETE,      KC_TRANSPARENT,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ESCAPE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_2,     ST_MACRO_3,     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         ST_MACRO_4,     KC_TRANSPARENT,
@@ -111,16 +153,19 @@ bool rgb_matrix_indicators_user(void) {
   }
   if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
-    case 1:
+    case _BASE:
+      set_layer_color(0);
+      break;
+    case _DEVELOPER:
       set_layer_color(1);
       break;
-    case 2:
+    case _NUMPAD:
       set_layer_color(2);
       break;
-    case 3:
+    case _STUFF:
       set_layer_color(3);
       break;
-    case 4:
+    case _NAVIGATION:
       set_layer_color(4);
       break;
    default:
