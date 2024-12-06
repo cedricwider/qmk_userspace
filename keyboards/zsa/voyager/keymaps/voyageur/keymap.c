@@ -61,7 +61,7 @@ enum voyager_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_voyager(
-    LALT(KC_U),     KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPC,
+    LALT(KC_U),     KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_MINUS,       KC_BSPC,
     HYPR_TAP,       KC_W,           KC_L,           KC_R,           KC_B,           KC_Z,                                           KC_SCLN,        KC_Q,           KC_U,           KC_D,           KC_J,           KC_BSLS,
     CK_CL_EC,       CK_HRS,         CK_HRH,         CK_HRN,         CK_HRT,         KC_COMMA,                                       KC_DOT,         CK_HRA,         CK_HRE,         CK_HRO,         CK_HRI,         MT(MOD_LCTL, KC_QUOTE),
     CK_HYPR0,       KC_F,           KC_M,           KC_V,           KC_C,           KC_SLASH,                                       KC_G,           KC_P,           KC_X,           KC_K,           KC_Y,           MT(MOD_LSFT, KC_ENTER),
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LCBR,        KC_HASH,        KC_EQUAL,       KC_RCBR,        KC_PIPE,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LABK,                                        KC_RABK,        KC_LPRN,        KC_DLR,         KC_MINUS,       KC_RPRN,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_BSLS,                                        KC_TRANSPARENT, KC_LBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_RBRC,        KC_TRANSPARENT,
-                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_NUMPAD),          KC_TRANSPARENT
+                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_NUMPAD),    KC_TRANSPARENT
   ),
 
   [_NUMPAD] = LAYOUT_voyager(
