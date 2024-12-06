@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RGB_SAD,        RGB_SAI,        KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_END,         KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,                                 KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
     RGB_HUD,        RGB_HUI,        KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                    KC_TRANSPARENT, TO(_BASE),                                          KC_TRANSPARENT, KC_TRANSPARENT
+                                                                KC_TRANSPARENT, TO(_BASE),                                          KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [_NAVIGATION] = LAYOUT_voyager(
     KC_TRANSPARENT, CK_ACS_1,       CK_ACS_2,       CK_ACS_3,       CK_ACS_4,       CK_ACS_5,                                       CK_ACS_6,       CK_ACS_7,       CK_ACS_8,       CK_ACS_9,       CK_ACS_0,       KC_TRANSPARENT,
@@ -108,6 +108,20 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM -62;
         case CK_RSPAC:
             return TAPPING_TERM -62;
+
+        case CK_HRT:
+            return TAPPING_TERM -62;
+        case CK_HRA:
+            return TAPPING_TERM -62;
+
+        case CK_HRS:
+            return TAPPING_TERM +62;
+        case CK_HRH:
+            return TAPPING_TERM +62;
+        case CK_HRO:
+            return TAPPING_TERM +62;
+        case CK_HRI:
+            return TAPPING_TERM +62;
         default:
             return TAPPING_TERM;
     }
