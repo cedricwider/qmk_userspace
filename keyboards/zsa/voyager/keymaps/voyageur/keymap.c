@@ -14,6 +14,7 @@ enum custom_keycodes {
   ST_MACRO_3,
   ST_MACRO_4,
 };
+
 enum voyager_layers {
     _BASE,
     _DEVELOPER,
@@ -105,18 +106,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CK_LWR:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -52;
         case CK_RSE:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -52;
         case CK_LSPAC:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -52;
         case CK_RSPAC:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -52;
 
         case CK_HRT:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -47;
         case CK_HRA:
-            return TAPPING_TERM -62;
+            return TAPPING_TERM -47;
 
         case CK_HRS:
             return TAPPING_TERM +62;
