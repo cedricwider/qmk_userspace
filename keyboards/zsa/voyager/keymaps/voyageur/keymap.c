@@ -28,10 +28,10 @@ enum voyager_layers {
 */
 
 // Thumb keys
-#define CK_LWR LT(_DEVELOPER, KC_MINUS)
+#define CK_LWR LT(_NUMPAD, KC_MINUS)
 #define CK_LSPAC LT(_NAVIGATION, KC_TAB)
 #define CK_RSPAC LT(_NAVIGATION, KC_ENTER)
-#define CK_RSE LT(_NUMPAD, KC_SPACE)
+#define CK_RSE LT(_DEVELOPER, KC_SPACE)
 
 // Home Row Mods
 #define CK_HRS MT(MOD_LGUI, KC_S)
@@ -98,39 +98,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TILD,        ST_MACRO_0,     ST_MACRO_1,     KC_TRANSPARENT, KC_TRANSPARENT,                                 LSFT(KC_TAB),   KC_TAB,         LALT(KC_BSPC),  KC_BSPC,        KC_DELETE,      KC_TRANSPARENT,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ESCAPE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_2,     ST_MACRO_3,     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         ST_MACRO_4,     KC_TRANSPARENT,
-                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                                    KC_TRANSPARENT, LGUI(KC_SPACE),                                 LGUI(KC_SPACE), KC_TRANSPARENT
   ),
 };
-
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case CK_LWR:
-            return TAPPING_TERM -52;
-        case CK_RSE:
-            return TAPPING_TERM -52;
-        case CK_LSPAC:
-            return TAPPING_TERM -52;
-        case CK_RSPAC:
-            return TAPPING_TERM -52;
-
-        case CK_HRT:
-            return TAPPING_TERM -47;
-        case CK_HRA:
-            return TAPPING_TERM -47;
-
-        case CK_HRS:
-            return TAPPING_TERM +62;
-        case CK_HRH:
-            return TAPPING_TERM +62;
-        case CK_HRO:
-            return TAPPING_TERM +62;
-        case CK_HRI:
-            return TAPPING_TERM +62;
-        default:
-            return TAPPING_TERM;
-    }
-}
 
 extern rgb_config_t rgb_matrix_config;
 
@@ -317,5 +287,66 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CK_LWR:
+            return TAPPING_TERM -32;
+        case CK_RSE:
+            return TAPPING_TERM -32;
+        case CK_LSPAC:
+            return TAPPING_TERM -32;
+        case CK_RSPAC:
+            return TAPPING_TERM -32;
 
+        case CK_HRT:
+            return TAPPING_TERM -27;
+        case CK_HRA:
+            return TAPPING_TERM -27;
 
+        case CK_HRS:
+            return TAPPING_TERM +62;
+        case CK_HRH:
+            return TAPPING_TERM +62;
+        case CK_HRO:
+            return TAPPING_TERM +62;
+        case CK_HRI:
+            return TAPPING_TERM +62;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CK_HRT:
+        case CK_HRA:
+            return 130;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CK_LWR:
+        case CK_RSE:
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case CK_LWR:
+        case CK_LSPAC:
+        case CK_RSPAC:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
