@@ -1,7 +1,9 @@
 {
-    "userspace_version": "1.1",
+    "userspace_version": "1.0",
     "build_targets": [
         ["planck/rev6", "cedricwider"],
-        ["keychron/q1v2/ansi_encoder", "halmak"]
+        ["keychron/q1v2/ansi_encoder", "halmak"],
+        ["zsa/voyager", "voyageur"],
+        ["zsa/voyager", "viaggiatore"]
     ]
 }
