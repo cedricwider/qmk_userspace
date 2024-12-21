@@ -8,6 +8,10 @@ enum custom_keycodes {
   HSV_0_255_255,
   HSV_74_255_255,
   HSV_169_255_255,
+
+  /*
+  * Macro definitions for custom keycodes
+  */
   ST_MACRO_0,
   ST_MACRO_1,
   ST_MACRO_2,
@@ -24,15 +28,11 @@ enum voyager_layers {
     _STUFF,
 };
 
-/*
-* Macro definitions for custom keycodes
-*/
-
 // Thumb keys
 #define CK_LWR MO(_LOWER)
 #define CK_RSE LT(_RAISE, KC_SPACE)
 
-#define CK_LSPAC MO(_NAV)
+#define CK_LSPAC LT(_NAV, KC_TAB)
 #define CK_RSPAC LT(_NAV, KC_ENTER)
 
 // Home Row Mods
@@ -50,7 +50,7 @@ enum voyager_layers {
 #define CK_HYPR0 LGUI(LCTL(RALT(LSFT(KC_0))))
 #define MEH_TAP  MEH_T(KC_TAB)
 #define CK_CL_EC MT(MOD_LCTL, KC_ESCAPE)
-#define CK_HPRUM HYPR_T(LALT(KC_U))
+#define CK_HPRUM LALT(KC_U)
 #define CK_NUM_F LT(_NUMERIC, KC_F)
 #define CK_MSRCH LGUI(KC_F12)
 
@@ -64,6 +64,12 @@ enum voyager_layers {
 #define CK_ACS_7 LALT(LCTL(LSFT(KC_7)))
 #define CK_ACS_8 LALT(LCTL(LSFT(KC_8)))
 #define CK_ACS_9 LALT(LCTL(LSFT(KC_9)))
+
+// Combo Definitions
+const uint16_t PROGMEM num_toggle[] = {KC_M, CK_NUM_F, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(num_toggle, TG(_NUMERIC)),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_voyager(
@@ -84,15 +90,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_DELETE,
-    KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_TRANSPARENT,
-    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_INS,                                         KC_PSCR,        KC_MINUS,       KC_EQUAL,       KC_LBRC,        KC_RBRC,        KC_TRANSPARENT,
+    KC_TILD,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_PIPE,
+    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_INS,                                         KC_PSCR,        KC_MINUS,       KC_EQUAL,       KC_LBRC,        KC_RBRC,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F11,                                         KC_F12,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                     TO(_STUFF),     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   [_NAV] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LCBR,        KC_RCBR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, CK_ACS_1,       CK_ACS_2,       CK_ACS_3,       CK_ACS_4,       CK_ACS_5,                                       CK_ACS_6,       CK_ACS_7,       CK_ACS_8,       CK_ACS_9,       CK_ACS_0,       KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LCBR,        KC_RCBR,        KC_TRANSPARENT,                                 LSFT(KC_TAB),   KC_TAB,         LALT(KC_BSPC),  KC_BSPC,        KC_DELETE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ESCAPE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LBRC,        KC_RBRC,        KC_TRANSPARENT,                                 KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         ST_MACRO_4,     KC_TRANSPARENT,
                                                                     KC_TRANSPARENT, LGUI(KC_SPACE),                                 LGUI(KC_SPACE), KC_TRANSPARENT
@@ -100,10 +106,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUMERIC] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_SLASH,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_ASTR,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_COLN,        KC_7,           KC_8,           KC_9,           KC_MINUS,       KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_4,           KC_5,           KC_6,           KC_EQUAL,       KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_0,           KC_1,           KC_2,           KC_3,           KC_COMMA,       KC_ENTER,
-                                                                    TO(_BASE),      KC_TRANSPARENT,                                 KC_TRANSPARENT, TO(_BASE)
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_UP,          KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_COLN,        KC_7,           KC_8,           KC_9,           KC_MINUS,       KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_4,           KC_5,           KC_6,           KC_EQUAL,       KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_0,           KC_1,           KC_2,           KC_3,           KC_COMMA,       KC_ENTER,
+                                                                    TO(_BASE),      TO(_BASE),                                      KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   [_STUFF] = LAYOUT_voyager(
