@@ -29,11 +29,11 @@ enum voyager_layers {
 };
 
 // Thumb keys
-#define CK_LWR MO(_LOWER)
-#define CK_RSE LT(_RAISE, KC_SPACE)
+#define CK_LWR LT(_NAV, KC_SPACE)
+#define CK_RSE LT(_NAV, KC_SPACE)
 
-#define CK_LSPAC LT(_NAV, KC_TAB)
-#define CK_RSPAC LT(_NAV, KC_ENTER)
+#define CK_LSPAC LT(_LOWER, KC_TAB)
+#define CK_RSPAC LT(_RAISE, KC_ENTER)
 
 // Home Row Mods
 #define CK_HRS MT(MOD_LGUI, KC_S)
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_PIPE,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_VOLD,                                        KC_VOLU,        KC_LBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_RBRC,        KC_TRANSPARENT,
-                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, TO(_STUFF)
+                                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_STUFF),     KC_TRANSPARENT
   ),
 
   [_RAISE] = LAYOUT_voyager(
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_PIPE,
     KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_INS,                                         KC_PSCR,        KC_MINUS,       KC_EQUAL,       KC_LBRC,        KC_RBRC,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_F11,                                         KC_F12,         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                    TO(_STUFF),     KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+                                                                    KC_TRANSPARENT, TO(_STUFF),                                     KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   [_NAV] = LAYOUT_voyager(
@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LCBR,        KC_RCBR,        KC_TRANSPARENT,                                 LSFT(KC_TAB),   KC_TAB,         LALT(KC_BSPC),  KC_BSPC,        KC_DELETE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ESCAPE,      KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LBRC,        KC_RBRC,        KC_TRANSPARENT,                                 KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         ST_MACRO_4,     KC_TRANSPARENT,
-                                                                    KC_TRANSPARENT, LGUI(KC_SPACE),                                 LGUI(KC_SPACE), KC_TRANSPARENT
+                                                                    LGUI(KC_SPACE), KC_TRANSPARENT,                                 KC_TRANSPARENT, LGUI(KC_SPACE)
   ),
 
   [_NUMERIC] = LAYOUT_voyager(
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RGB_SAD,        RGB_SAI,        KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_END,         KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,                                 KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_TRANSPARENT,
     RGB_HUD,        RGB_HUI,        KC_TRANSPARENT, HSV_0_255_255,  HSV_74_255_255, HSV_169_255_255,                                KC_TRANSPARENT, KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                TO(_BASE), KC_TRANSPARENT,                                          KC_TRANSPARENT, TO(_BASE)
+                                                                KC_TRANSPARENT, TO(_BASE),                                           TO(_BASE), KC_TRANSPARENT
   ),
 
 };
@@ -308,9 +308,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CK_LWR:
-            return TAPPING_TERM -32;
-        case CK_RSE:
+        case CK_RSE: // CK_LWR is identical -> no need to define it here again
             return TAPPING_TERM -32;
         case CK_LSPAC:
             return TAPPING_TERM -32;
@@ -347,8 +345,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CK_LWR:
-        case CK_RSE:
+        case CK_LSPAC:
+        case CK_RSPAC:
             // Immediately select the hold action when another key is tapped.
             return true;
         default:
@@ -359,7 +357,6 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CK_LWR:
         case CK_LSPAC:
         case CK_RSPAC:
             // Immediately select the hold action when another key is pressed.
