@@ -153,18 +153,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Navigation (Lower + Raise) */
 [_NAVIGATION] = LAYOUT_planck_grid(
-    _______, _______, _______, _______, _______,     _______, LSFT(KC_TAB), KC_TAB, LALT(KC_BSPC),  KC_BSPC,  KC_DEL,  _______,
-    _______, _______, _______, _______, _______,     _______,   KC_LEFT,   KC_DOWN,    KC_UP,       KC_RIGHT, KC_ESC,  _______,
-    _______, _______, _______, _______, _______,     _______,   KC_HOME,   KC_PGDN,    KC_PGUP,     KC_END,   _______, _______,
+    _______, _______, _______, _______, _______,   _______, LSFT(KC_TAB), KC_TAB, LALT(KC_BSPC),  KC_BSPC,  KC_DEL,  _______,
+    _______, _______, _______, _______, _______,   _______,   KC_LEFT,   KC_DOWN,    KC_UP,       KC_RIGHT, KC_ESC,  _______,
+    _______, _______, _______, _______, _______,   _______,   KC_HOME,   KC_PGDN,    KC_PGUP,     KC_END,   _______, _______,
     _______, _______, _______, _______, TO(_BASE), _______,   _______,   _______,    _______,     _______,  _______, _______
 ),
 
 
 /* NUMSYM (Lower + Raise) */
 [_NUMSYM] = LAYOUT_planck_grid(
-    _______, _______, _______, KC_LCBR, KC_RCBR,     _______, KC_ASTR, KC_7,    KC_8,  KC_9,   KC_SLSH, _______,
-    _______, _______, _______, KC_LPRN, KC_RPRN,     _______, KC_COLN, KC_4,    KC_5,  KC_6,   KC_MINS, _______,
-    _______, _______, _______, KC_LBRC, KC_RBRC,     _______, KC_COMM, KC_1,    KC_2,  KC_3,   KC_PLUS, _______,
+    _______, _______, _______, KC_LCBR, KC_RCBR,   _______, KC_ASTR, KC_7,    KC_8,  KC_9,   KC_SLSH, _______,
+    _______, _______, _______, KC_LPRN, KC_RPRN,   _______, KC_COLN, KC_4,    KC_5,  KC_6,   KC_MINS, _______,
+    _______, _______, _______, KC_LBRC, KC_RBRC,   _______, KC_COMM, KC_1,    KC_2,  KC_3,   KC_PLUS, _______,
     _______, _______, _______, _______, TO(_BASE), _______, _______, _______, KC_0,  KC_DOT, _______, _______
 ),
 
