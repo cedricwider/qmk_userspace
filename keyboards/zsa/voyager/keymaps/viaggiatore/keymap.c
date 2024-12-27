@@ -53,6 +53,7 @@ enum voyager_layers {
 #define CK_HPRUM LALT(KC_U)
 #define CK_NUM_F LT(_NUMERIC, KC_F)
 #define CK_MSRCH LGUI(KC_F12)
+#define CK_SENTR MT(MOD_LSFT, KC_ENTER)
 
 #define CK_ACS_0 LALT(LCTL(LSFT(KC_0)))
 #define CK_ACS_1 LALT(LCTL(LSFT(KC_1)))
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CK_HYPR0 ,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_BSPC,
     MEH_TAP,        KC_W,           KC_L,           KC_R,           KC_B,           KC_Z,                                           KC_SCLN,        KC_Q,           KC_U,           KC_D,           KC_J,           KC_BSLS,
     CK_CL_EC,       CK_HRS,         CK_HRH,         CK_HRN,         CK_HRT,         KC_COMMA,                                       KC_DOT,         CK_HRA,         CK_HRE,         CK_HRO,         CK_HRI,         MT(MOD_LCTL, KC_QUOTE),
-    OSM(MOD_LSFT),  CK_NUM_F,       KC_M,           KC_V,           KC_C,           KC_SLASH,                                       KC_G,           KC_P,           KC_X,           KC_K,           KC_Y,           MT(MOD_LSFT, KC_ENTER),
+    OSM(MOD_LSFT),  CK_NUM_F,       KC_M,           KC_V,           KC_C,           KC_SLASH,                                       KC_G,           KC_P,           KC_X,           KC_K,           KC_Y,           CK_SENTR,
                                                                     CK_LWR,         CK_LSPAC,                                       CK_RSPAC,       CK_RSE
   ),
 
@@ -347,6 +348,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CK_LSPAC:
         case CK_RSPAC:
+        case CK_SENTR:
             // Immediately select the hold action when another key is tapped.
             return true;
         default:
@@ -359,6 +361,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CK_LSPAC:
         case CK_RSPAC:
+        case CK_SENTR:
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
