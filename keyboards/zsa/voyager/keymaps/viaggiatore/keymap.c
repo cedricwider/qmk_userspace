@@ -32,7 +32,7 @@ enum voyager_layers {
 #define CK_LWR LT(_NAV, KC_SPACE)
 #define CK_RSE LT(_NAV, KC_SPACE)
 
-#define CK_LSPAC LT(_LOWER, KC_TAB)
+#define CK_LSPAC MO(_LOWER)
 #define CK_RSPAC LT(_RAISE, KC_ENTER)
 
 // Home Row Mods
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_BRID,        KC_BRIU,        KC_MCTL,        CK_MSRCH,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_DELETE,
     KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_PIPE,
-    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_TRANSPARENT,
+    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_VOLD,                                        KC_VOLU,        KC_LBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_RBRC,        KC_TRANSPARENT,
                                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_STUFF),     KC_TRANSPARENT
   ),
