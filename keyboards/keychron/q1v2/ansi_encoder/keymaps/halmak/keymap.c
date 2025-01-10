@@ -29,12 +29,22 @@ enum layers{
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
+// home row mod keys
+#define KC_GUIS LGUI_T(KC_S)
+#define KC_ALTH LALT_T(KC_H)
+#define KC_CTLN LCTL_T(KC_N)
+#define KC_SFTT LSFT_T(KC_T)
+#define KC_SFTA LSFT_T(KC_A)
+#define KC_CTLE LCTL_T(KC_E)
+#define KC_ALTO LALT_T(KC_O)
+#define KC_GUII LGUI_T(KC_I)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_ansi_82(
         LGUI(KC_F12),   KC_BRID, KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,       KC_VOLU, KC_DEL,   KC_MUTE,
         KC_GRV,         KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,       KC_EQL,  KC_BSPC,  KC_PGUP,
         KC_TAB,         KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,    KC_LBRC,       KC_RBRC, KC_BSLS,  KC_PGDN,
-        LCTL_T(KC_ESC), KC_S,    KC_H,    KC_N,    KC_T,    KC_COMM, KC_DOT,  KC_A,    KC_E,    KC_O,    LT(CODE,KC_I), KC_QUOT, LCTL_T(KC_ENT),    KC_HOME,
+        LCTL_T(KC_ESC), KC_GUIS, KC_ALTH, KC_CTLN, KC_SFTT, KC_COMM, KC_DOT,  KC_SFTA, KC_CTLE, KC_ALTO, KC_GUII, KC_QUOT, LCTL_T(KC_ENT),    KC_HOME,
         OSM(MOD_LSFT),  KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,    OSM(MOD_RSFT), KC_UP,
         KC_LCTL,        KC_LGUI, KC_LOPT,                            LT(CODE,KC_SPC),                    KC_RALT, KC_RGUI, MO(MAC_FN), KC_LEFT, KC_DOWN, KC_RGHT),
 
