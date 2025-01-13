@@ -33,7 +33,7 @@ enum voyager_layers {
 #define CK_RSE LT(_NAV, KC_SPACE)
 
 #define CK_LSPAC MO(_LOWER)
-#define CK_RSPAC LT(_RAISE, KC_ENTER)
+#define CK_RSPAC MO(_RAISE)
 
 // Home Row Mods
 #define CK_HRS MT(MOD_LGUI, KC_S)
