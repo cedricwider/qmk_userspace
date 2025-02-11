@@ -8,6 +8,7 @@ enum custom_keycodes {
   HSV_0_255_255,
   HSV_74_255_255,
   HSV_169_255_255,
+  LONELY_OP,
 
   /*
   * Macro definitions for custom keycodes
@@ -84,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_BRID,        KC_BRIU,        KC_MCTL,        CK_MSRCH,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_DELETE,
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_PIPE,
-    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_GRAVE,
+    KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,        KC_RPRN,        KC_TRANSPARENT,                                 LONELY_OP,      KC_UNDS,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_GRAVE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_VOLD,                                        KC_VOLU,        KC_LBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_RBRC,        KC_TRANSPARENT,
                                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(_STUFF),     KC_TRANSPARENT
   ),
@@ -321,6 +322,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         rgblight_sethsv(169,255,255);
       }
       return false;
+    case LONELY_OP:
+    if (record->event.pressed) {
+      SEND_STRING("&.");
+    }
+    break;
   }
   return true;
 }
