@@ -99,8 +99,17 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case SHFTT:
+        case SHFTA:
+            return g_tapping_term - 20;
+
         case LT(CODE,KC_I):
-            return g_tapping_term + 50;
+        case CTL_E:
+        case CTL_N:
+        case GUI_S:
+        case GUI_I:
+            return g_tapping_term + 20;
+
         default:
             return g_tapping_term;
     }
