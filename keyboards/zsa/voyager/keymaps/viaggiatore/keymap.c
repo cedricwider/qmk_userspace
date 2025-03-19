@@ -30,7 +30,7 @@ enum voyager_layers {
 };
 
 // Thumb keys
-#define CK_LSPAC LT(_NAV, KC_SPACE)
+#define CK_LSPAC LT(_NAV, KC_UNDS)
 #define CK_RSPAC LT(_NAV, KC_SPACE)
 #define CK_LWR MO(_LOWER)
 #define CK_RSE MO(_RAISE)
