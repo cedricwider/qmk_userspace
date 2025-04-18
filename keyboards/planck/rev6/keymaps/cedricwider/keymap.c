@@ -58,7 +58,7 @@ enum planck_keycodes {
 #define ALT_O LALT_T(KC_O)
 #define GUI_I RGUI_T(KC_I)
 #define LSPAC LT(_NAVIGATION, KC_ENT)
-#define RSPAC KC_SPC
+#define RSPAC LT(_NAVIGATION, KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Halmak
@@ -73,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_planck_grid(
-    KC_TAB , KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,    KC_BSPC,
-    CLESC  , GUI_S,   ALT_H,   CTL_N,   SHFTT,   KC_COMM, KC_DOT,  SHFTA,   CTL_E,   ALT_O,   GUI_I,   KC_QUOT,
-    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,    CLENT,
+    KC_TAB,  KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,      MEH_T(KC_BSPC),
+    CLESC  , GUI_S,   ALT_H,   CTL_N,   SHFTT,   KC_COMM, KC_DOT,  SHFTA,   CTL_E,   ALT_O,   GUI_I,     KC_QUOT,
+    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,      CLENT,
     FNCTN  , KC_LCTL, KC_LALT, KC_LGUI, CK_LWR,   LSPAC,   RSPAC,   CK_RSE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
@@ -153,10 +153,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Navigation (Lower + Raise) */
 [_NAVIGATION] = LAYOUT_planck_grid(
-    _______, _______, _______, _______, _______,   _______, LSFT(KC_TAB), KC_TAB, LALT(KC_BSPC),  KC_BSPC,  KC_DEL,  _______,
-    _______, _______, _______, _______, _______,   _______,   KC_LEFT,   KC_DOWN,    KC_UP,       KC_RIGHT, KC_ESC,  _______,
-    _______, _______, _______, _______, _______,   _______,   KC_HOME,   KC_PGDN,    KC_PGUP,     KC_END,   _______, _______,
-    _______, _______, _______, _______, TO(_BASE), _______,   _______,   _______,    _______,     _______,  _______, _______
+    LGUI(KC_F12), _______, _______, KC_LCBR, KC_RCBR,   _______, LSFT(KC_TAB), KC_TAB, LALT(KC_BSPC),  KC_BSPC,  KC_DEL,  _______,
+    _______,      _______, _______, KC_LPRN, KC_RPRN,   _______,   KC_LEFT,   KC_DOWN,    KC_UP,       KC_RIGHT, KC_ESC,  _______,
+    _______,      _______, _______, KC_LBRC, KC_RBRC,   _______,   KC_HOME,   KC_PGDN,    KC_PGUP,     KC_END,   _______, _______,
+    _______,      _______, _______, _______, TO(_BASE), _______,   _______,   _______,    _______,     _______,  _______, _______
 ),
 
 
