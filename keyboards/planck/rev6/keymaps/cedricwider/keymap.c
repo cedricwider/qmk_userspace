@@ -48,7 +48,7 @@ enum planck_keycodes {
 
 /* Tap Dance Declarations */
 #define CLESC LCTL_T(KC_ESC)
-#define CLENT LCTL_T(KC_ENT)
+#define CW_ENT LSFT_T(KC_ENT)
 #define GUI_S LGUI_T(KC_S)
 #define ALT_H LALT_T(KC_H)
 #define CTL_N LCTL_T(KC_N)
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | clesc|   s  |   h  |   n  |   t  |   ,  |   .  |   a  |   e  |   o  |   i  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | CW_TG|   f  |   m  |   v  |   c  |   /  |   g  |   p  |   x  |   k  |   y  |clent |
+ * | CW_TG|   f  |   m  |   v  |   c  |   /  |   g  |   p  |   x  |   k  |   y  |cw_ent|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_planck_grid(
     KC_TAB,  KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,      MEH_T(KC_BSPC),
     CLESC  , GUI_S,   ALT_H,   CTL_N,   SHFTT,   KC_COMM, KC_DOT,  SHFTA,   CTL_E,   ALT_O,   GUI_I,     KC_QUOT,
-    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,      CLENT,
+    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,      CW_ENT,
     FNCTN  , KC_LCTL, KC_LALT, KC_LGUI, CK_LWR,   LSPAC,   RSPAC,   CK_RSE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
