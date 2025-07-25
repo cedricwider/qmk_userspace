@@ -47,7 +47,7 @@ enum voyager_layers {
 #define CK_HRI MT(MOD_RGUI, KC_I)
 
 // Special Keys
-#define CK_HYPR0 HYPR(KC_0)
+#define CK_HYPR0 LGUI(KC_F12)
 #define MEH_TAP  MEH_T(KC_TAB)
 #define MEH_BSL  MEH_T(KC_BSLS)
 #define CK_CL_EC MT(MOD_LCTL, KC_ESCAPE)
