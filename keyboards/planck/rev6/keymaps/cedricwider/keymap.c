@@ -48,6 +48,7 @@ enum planck_keycodes {
 
 /* Tap Dance Declarations */
 #define CLESC LCTL_T(KC_ESC)
+#define CLQUT LCTL_T(KC_QUOT)
 #define CW_ENT LSFT_T(KC_ENT)
 #define GUI_S LGUI_T(KC_S)
 #define ALT_H LALT_T(KC_H)
@@ -73,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_planck_grid(
-    KC_TAB,  KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,      MEH_T(KC_BSPC),
-    CLESC  , GUI_S,   ALT_H,   CTL_N,   SHFTT,   KC_COMM, KC_DOT,  SHFTA,   CTL_E,   ALT_O,   GUI_I,     KC_QUOT,
-    KC_LSFT, KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,      CW_ENT,
-    FNCTN  , KC_LCTL, KC_LALT, KC_LGUI, CK_LWR,   LSPAC,   RSPAC,   CK_RSE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    MEH_T(KC_TAB),  KC_W,    KC_L,    KC_R,    KC_B,    KC_Z,    KC_SCLN, KC_Q,    KC_U,    KC_D,    KC_J,      MEH_T(KC_BSPC),
+    CLESC  ,        GUI_S,   ALT_H,   KC_N,    KC_T,    KC_COMM, KC_DOT,  KC_A,    KC_E,    ALT_O,   GUI_I,     CLQUT,
+    KC_LSFT,        KC_F,    KC_M,    KC_V,    KC_C,    KC_SLSH, KC_G,    KC_P,    KC_X,    KC_K,    KC_Y,      CW_ENT,
+    FNCTN  ,        KC_LCTL, KC_LALT, KC_LGUI, CK_LWR,  LSPAC,   RSPAC,   CK_RSE,  KC_LGUI, KC_LALT, KC_LCTL,   KC_RGHT
 ),
 
 /* Qwerty
@@ -390,6 +391,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CK_LWR:
         case CK_RSE:
+        case CW_ENT:
         case LSPAC:
             // Immediately select the hold action when another key is pressed.
             return true;
